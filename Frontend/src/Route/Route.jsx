@@ -1,3 +1,7 @@
 export default function Route() {
-  return <></>;
+  return (
+    <>
+      <Box></Box>
+    </>
+  );
 }
