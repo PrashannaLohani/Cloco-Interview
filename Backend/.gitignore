@@ -2,6 +2,7 @@
 *.pyc
 *.pyo
 *.pyd
+*.pot
 __pycache__/
 
 # Virtual environment
@@ -31,3 +32,10 @@ db.sqlite3
 # OS-generated files
 .DS_Store
 Thumbs.db
+
+
+*.pid        # Ignore PID files
+*.sock       # Ignore Unix socket files
+docker-compose.override.yml # If you have this file for local overrides
+
+db.sqlite3
