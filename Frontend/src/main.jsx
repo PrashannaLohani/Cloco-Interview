@@ -1,9 +1,20 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+
+import App from "./App";
+import theme from "./Utils/themes";
+import Loader from "./Components/loader/Loader";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Suspense fallback={<Loader />}>
+          <App />
+        </Suspense>
+      </BrowserRouter>
+    </ThemeProvider>
   </StrictMode>
 );
