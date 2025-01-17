@@ -2,6 +2,9 @@ import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   palette: {
+    typography: {
+      fontFamily: "'Roboto Mono', monospace", // Global typewriter font
+    },
     primary: {
       main: "#FBF5E5",
       text: "#212121",
