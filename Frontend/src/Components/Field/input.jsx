@@ -1,5 +1,7 @@
-import { TextField } from "@mui/material";
+import { TextField, InputAdornment, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
+import { useState } from "react";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export default function Input({
   name,
@@ -12,8 +14,13 @@ export default function Input({
   value,
   helperText,
   error,
+  width,
   ...rest
 }) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+
   return (
     <TextField
       variant={variant}
@@ -21,15 +28,26 @@ export default function Input({
       label={label}
       placeholder={placeholder}
       required={required}
-      type={type}
-      value={value}
-      onChange={onChange}
+      type={type === "password" && showPassword ? "text" : type}
+      value={value} // This ensures the component is controlled
+      onChange={onChange} // Pass onChange to handle updates
       helperText={helperText}
       error={error}
+      sx={{ width }}
+      InputProps={{
+        endAdornment: type === "password" && (
+          <InputAdornment position="end">
+            <IconButton onClick={handleClickShowPassword} edge="end">
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </InputAdornment>
+        ),
+      }}
       {...rest}
     />
   );
 }
+
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
@@ -41,4 +59,5 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   helperText: PropTypes.string,
   error: PropTypes.bool,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

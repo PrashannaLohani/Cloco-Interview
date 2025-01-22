@@ -6,7 +6,8 @@ const theme = createTheme({
       fontFamily: "'Roboto Mono', monospace", // Global typewriter font
     },
     primary: {
-      main: "#FBF5E5",
+      main: "#000000",
+      background: "#FBF5E5",
       text: "#212121",
     },
     status: {
