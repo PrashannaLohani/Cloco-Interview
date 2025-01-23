@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export default function CustomButton({
   children,
   onClick,
-  variant = "contained",
+  variant,
   color = "primary",
   size = "medium",
   disabled = false,
