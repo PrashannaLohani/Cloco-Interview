@@ -1,7 +1,7 @@
-import React from "react";
-
-const Notification = () => {
-  return <div>Notification</div>;
-};
-
-export default Notification;
+export default function Notification() {
+  return (
+    <div>
+      <h1>Notification</h1>
+    </div>
+  );
+}
