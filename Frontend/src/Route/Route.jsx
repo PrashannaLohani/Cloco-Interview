@@ -3,6 +3,7 @@ import { useRoutes, Outlet } from "react-router-dom";
 import Loader from "../Components/loader/Loader";
 import MainLayout from "../Layout/MainLayout";
 import ProtectedRoute from "../Layout/ProtectedRoute";
+import Error from "../Components/Error/Error";
 
 // Lazy loading other pages
 const Login = lazy(() => import("../Pages/Login"));
@@ -34,7 +35,7 @@ export default function Route() {
     },
     {
       path: "*",
-      element: <h1>404 Not Found</h1>,
+      element: <Error />,
     },
   ]);
 }

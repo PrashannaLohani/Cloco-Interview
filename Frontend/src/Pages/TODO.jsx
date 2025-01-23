@@ -27,13 +27,34 @@ export default function Todo() {
       priority: "Low",
     },
   ];
+  const fetchDate = new Date();
+
+  // Format date
+  const date = fetchDate.getDate();
+  const month = String(fetchDate.getMonth() + 1).padStart(2, "0");
+  const year = fetchDate.getFullYear();
+  const fullDate = `${date}/${month}/${year}`;
+
+  // Format time
+  const hours24 = fetchDate.getHours();
+  const ampm = hours24 >= 12 ? "PM" : "AM";
+  const hours12 = hours24 % 12 || 12;
+  const minutes = String(fetchDate.getMinutes()).padStart(2, "0");
+  const fullTime = `${hours12}:${minutes} ${ampm}`;
+
   return (
-    <Box p="1rem">
-      <Box display="flex" justifyContent="flex-end">
-        <Typography variant="caption">12/12/2025, 12:00 PM</Typography>
+    <Box p="1rem" overflow="auto">
+      <Box display="flex" justifyContent="space-between">
+        <Box bgcolor="red" p="0.5rem">
+          Sort
+        </Box>
+        <Typography variant="caption">
+          {fullDate}, {fullTime}
+        </Typography>
       </Box>
       {taskData.map((task, id) => (
         <Box
+          key={id}
           display="flex"
           alignItems="center"
           borderBottom="1px solid black"
