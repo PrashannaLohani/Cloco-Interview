@@ -4,7 +4,6 @@ import ChecklistIcon from "@mui/icons-material/Checklist";
 
 import { Avatar, Badge, Box, Typography } from "@mui/material";
 import { useState } from "react";
-import Search from "../Components/Field/search";
 
 export default function Navbar() {
   const Navbar = [

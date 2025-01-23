@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 import Navbar from "./Navbar";
+import Todo from "../Pages/Todo";
 
-export default function MainLayout() {
+export default function MainLayout({ children }) {
   return (
     <Box
       minHeight="100vh"
@@ -17,6 +18,7 @@ export default function MainLayout() {
       >
         <Navbar />
         <hr />
+        {children}
       </Box>
     </Box>
   );
