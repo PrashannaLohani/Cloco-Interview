@@ -1,4 +1,4 @@
-import { Box, Checkbox, Divider, Typography } from "@mui/material";
+import { Box, Checkbox, Typography } from "@mui/material";
 
 export default function Todo() {
   const taskData = [
@@ -52,35 +52,42 @@ export default function Todo() {
           {fullDate}, {fullTime}
         </Typography>
       </Box>
-      {taskData.map((task, id) => (
-        <Box
-          key={id}
-          display="flex"
-          alignItems="center"
-          borderBottom="1px solid black"
-          p="1rem"
-        >
-          <Checkbox />
-          <Box display="flex" flexDirection="column">
-            <Typography variant="h6">{task.title}</Typography>
-            <Typography variant="body1">{task.desc}</Typography>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-around"
-              gap="2rem"
-            >
-              <Typography variant="caption">
-                Due Date: {task.dueDate}
-              </Typography>
-              <Typography variant="caption">Time:{task.time}</Typography>
-              <Typography variant="caption">
-                Priority: {task.priority}
-              </Typography>
+
+      {taskData && taskData.length > 0 ? (
+        taskData.map((task, id) => (
+          <Box
+            key={id}
+            display="flex"
+            alignItems="center"
+            borderBottom="1px solid black"
+            p="1rem"
+          >
+            <Checkbox />
+            <Box display="flex" flexDirection="column">
+              <Typography variant="h6">{task.title}</Typography>
+              <Typography variant="body1">{task.desc}</Typography>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="space-around"
+                gap="2rem"
+              >
+                <Typography variant="caption">
+                  Due Date: {task.dueDate}
+                </Typography>
+                <Typography variant="caption">Time: {task.time}</Typography>
+                <Typography variant="caption">
+                  Priority: {task.priority}
+                </Typography>
+              </Box>
             </Box>
           </Box>
+        ))
+      ) : (
+        <Box>
+          <Typography variant="h6">No tasks available</Typography>
         </Box>
-      ))}
+      )}
     </Box>
   );
 }
