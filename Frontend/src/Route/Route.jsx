@@ -1,7 +1,8 @@
 import { lazy, Suspense } from "react";
 import { useRoutes, Outlet } from "react-router-dom";
-import Navbar from "../Layout/Navbar";
 import Loader from "../Components/loader/Loader";
+import MainLayout from "../Layout/MainLayout";
+import ProtectedRoute from "../Layout/ProtectedRoute";
 
 // Lazy loading other pages
 const Login = lazy(() => import("../Pages/Login"));
@@ -14,12 +15,13 @@ export default function Route() {
     {
       element: (
         <Suspense fallback={<Loader />}>
-          <Navbar>
+          {/* <ProtectedRoute> */}
+          <MainLayout>
             <Outlet />
-          </Navbar>
+          </MainLayout>
+          {/* </ProtectedRoute> */}
         </Suspense>
       ),
-      path: "/",
       children: [
         { element: <History />, path: "/history" },
         { element: <Notification />, path: "/notification" },
@@ -29,6 +31,10 @@ export default function Route() {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "*",
+      element: <h1>404 Not Found</h1>,
     },
   ]);
 }

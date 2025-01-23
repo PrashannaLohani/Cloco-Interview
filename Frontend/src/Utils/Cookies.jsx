@@ -3,7 +3,7 @@ export function setCookie(name, value, days = 72000) {
   date.setTime(date.getTime() + days * 1000);
   const expires = `; expires=${date.toUTCString()}`;
 
-  document.cookie = `${name}=${value}${expires}; path=/`;
+  document.cookie = `${name}=${value}${expires}; path=/login`;
 }
 
 export function getCookie(name) {

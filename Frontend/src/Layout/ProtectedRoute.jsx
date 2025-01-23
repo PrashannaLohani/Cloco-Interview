@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 import { getCookie } from "../Utils/Cookies";
+import PropTypes from "prop-types";
 
 export default function ProtectedRoute({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
